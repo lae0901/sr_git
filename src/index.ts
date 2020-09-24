@@ -1,4 +1,6 @@
 import simpleGit, { SimpleGit } from 'simple-git';
+import * as path from 'path';
+import { dir_containsFile } from 'sr_core_ts';
 
 let git: SimpleGit | null = null ;
 let git_rootPath = '' ;
@@ -72,6 +74,28 @@ export async function git_pull(
       appendActivityLog(`git pull error: ${e}`);
     }
   }
+}
+
+// ------------------------------ git_resolveRootPath ------------------------------
+// look for .git folder in the hierarchy of the specified directory path.
+export async function git_resolveRootPath(dirPath: string): Promise<string>
+{
+  // starting from dirPath, check for .git sub folder.
+  while (true)
+  {
+    const exists = await dir_containsFile(dirPath, ['.git']);
+    if (exists)
+      break;
+    const parent_dirPath = path.dirname(dirPath);
+    if (!parent_dirPath || parent_dirPath == dirPath)
+    {
+      dirPath = '';
+      break;
+    }
+    else
+      dirPath = parent_dirPath;
+  }
+  return dirPath;
 }
 
 // -------------------------------- git_status --------------------------------

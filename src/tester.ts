@@ -2,7 +2,7 @@ import * as os from 'os';
 import * as fs from 'fs';
 import * as path from 'path';
 import {testResults_append, testResults_consoleLog, testResults_new } from 'sr_test_framework';
-import { git_status } from './index';
+import { git_resolveRootPath, git_status } from './index';
 
 // run main function that is declared as async. 
 async_main( ) ;
@@ -33,6 +33,16 @@ async function git_test()
     const actual = await git_status( undefined, activityLog_append ) ;
     const desc = 'get git status' ;
     testResults_append(results, { method, expected, actual, desc } );
+  }
+
+  // git_resolveRootPath.
+  {
+    const method = 'git_resolveRootPath';
+    const dirPath = process.cwd( ) ;
+    const expected = dirPath ;
+    const actual = await git_resolveRootPath( dirPath );
+    const desc = 'get git root path';
+    testResults_append(results, { method, expected, actual, desc });
   }
 
   return results;

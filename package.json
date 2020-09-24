@@ -1,6 +1,6 @@
 {
   "name": "sr_git",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "git functions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -24,7 +24,8 @@
   "homepage": "https://github.com/lae0901/sr_git#readme",
   "dependencies": {
     "@types/node": "^14.11.2",
-    "simple-git": "^2.20.1"
+    "simple-git": "^2.20.1",
+    "sr_core_ts": "^1.46.39"
   },
   "devDependencies": {
     "sr_test_framework": "^1.0.12",
