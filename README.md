@@ -1,6 +1,4 @@
-# base64 typescript functions
-* rxp - regular expression constants
-* core.ts - contains series of string_ and scan_ functions.
+# git typescript functions
 
 ## usage
 ```
@@ -8,16 +6,12 @@ import { dir_mkdir, string_tail, string_contains } from 'sr_core_ts';
 
 ```
 
-## base64 methods
-* 
-* array_compare<T>( arr1, arr2 )
-* toarr = array_copyItems( arr, start, length )
-* array_front<T>( arr: T[] ) : T | null
-* boolean = stringArray_contains( arr, text )
+## git methods
+* const { isRepo, isBehind, isAhead, hasModified } = git_status( path, appendActivityLog )
 
 ## publish instructions
 * increment version number in package.json
-* make sure new functions are exported from base64.ts
+* make sure new functions are exported from index.ts
 * npm run build
 * npm run test
 * git add, commit, push to repo

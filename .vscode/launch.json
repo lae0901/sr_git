@@ -24,7 +24,7 @@
       "program": "${workspaceFolder}\\src\\tester.ts",
       "preLaunchTask": "npm: build",
       "outFiles": [
-        "c:\\github\\sr_core_ts\\lib\\tester.js"
+        "c:\\github\\sr_git\\lib\\tester.js"
       ]
     },
 
