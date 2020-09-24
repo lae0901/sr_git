@@ -14,7 +14,7 @@ async function async_main( )
 
   // git_test
   {
-    const res = git_test();
+    const res = await git_test();
     results.push(...res);
   }
 
@@ -22,16 +22,17 @@ async function async_main( )
 }
 
 // ---------------------------------- git_test ----------------------------------
-function git_test()
+async function git_test()
 {
   const results = testResults_new();
-  // test the base64Builder function.
+
+  // git_status.
   {
     const method = 'git_status';
-    const expected = { isRepo:true, isBehind:false, isAhead:false, hasModified:true };
-    const testResult = git_status( undefined, activityLog_append ) ;
+    const expected = { isRepo:true, isBehind:false, isAhead:false, isModified:true };
+    const actual = await git_status( undefined, activityLog_append ) ;
     const desc = 'get git status' ;
-    testResults_append(results, { method, expected, testResult, desc } );
+    testResults_append(results, { method, expected, actual, desc } );
   }
 
   return results;

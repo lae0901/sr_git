@@ -78,11 +78,11 @@ export async function git_pull(
 export async function git_status(
         rootPath: string | undefined, 
         appendActivityLog: (text: string) => void ):
-  Promise<{ isRepo:boolean, isBehind?: boolean, isAhead?: boolean, hasModified?: boolean }>
+  Promise<{ isRepo:boolean, isBehind?: boolean, isAhead?: boolean, isModified?: boolean }>
 {
   let isBehind = false;
   let isAhead = false;
-  let hasModified = false;
+  let isModified = false;
   let isRepo = false ;
 
   git_ensure(rootPath, appendActivityLog);
@@ -99,7 +99,7 @@ export async function git_status(
       if (sr.ahead > 0)
         isAhead = true;
       if (sr.modified.length > 0)
-        hasModified = true;
+        isModified = true;
     }
     catch (e)
     {
@@ -107,5 +107,5 @@ export async function git_status(
     }
   }
 
-  return { isRepo, isBehind, isAhead, hasModified };
+  return { isRepo, isBehind, isAhead, isModified };
 }
