@@ -57,10 +57,13 @@ export async function git_listRemote(
 }
 
 // ----------------------------------- git_pull -----------------------------------
+// run git pull origin master.
+// return text of error message.
 export async function git_pull(  
   rootPath: string | undefined,
   appendActivityLog: (text: string) => void)
 {
+  let errmsg = '' ;
   git_ensure(rootPath, appendActivityLog );
   if (git)
   {
@@ -71,9 +74,11 @@ export async function git_pull(
     }
     catch (e)
     {
+      errmsg = e.toString( ) ;
       appendActivityLog(`git pull error: ${e}`);
     }
   }
+  return errmsg ;
 }
 
 // ------------------------------ git_resolveRootPath ------------------------------
