@@ -1,15 +1,17 @@
 import simpleGit, { SimpleGit } from 'simple-git';
 import * as path from 'path';
-import { dir_containsFile } from 'sr_core_ts';
+import { dir_containsItem } from 'sr_core_ts';
 
 let git: SimpleGit | null = null ;
 let git_rootPath = '' ;
+
+type AppendActivityLog = (text: string) => void ;
 
 // ---------------------------------- git_ensure ----------------------------------
 // make sure global SimpleGit object is instantiated. 
 // Connect to git repo found from root path of project opened in vscode.
 function git_ensure(rootPath: string | undefined, 
-                    appendActivityLog : (text:string) => void )
+                    appendActivityLog : AppendActivityLog )
 {
   if ( !rootPath )
   {
@@ -88,7 +90,7 @@ export async function git_resolveRootPath(dirPath: string): Promise<string>
   // starting from dirPath, check for .git sub folder.
   while (true)
   {
-    const exists = await dir_containsFile(dirPath, ['.git']);
+    const exists = await dir_containsItem(dirPath, ['.git']);
     if (exists)
       break;
     const parent_dirPath = path.dirname(dirPath);
