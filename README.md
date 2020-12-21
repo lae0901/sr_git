@@ -7,8 +7,8 @@ import { dir_mkdir, string_tail, string_contains } from 'sr_core_ts';
 ```
 
 ## git methods
-* const { isRepo, isBehind, isAhead, hasModified } = git_status( path, appendActivityLog )
-* gitPath = await git_resolveRootPath( dirPath )
+* const { rootPath, isRepo, isBehind, isAhead, hasModified } = git_status( path, appendActivityLog )
+* gitPath = await git_resolveGitPath( dirPath )
 * errmsg = await git_pull( rootPath, appendActivityLog )
 
 ## publish instructions

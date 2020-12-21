@@ -2,7 +2,7 @@ import * as os from 'os';
 import * as fs from 'fs';
 import * as path from 'path';
 import {testResults_append, testResults_consoleLog, testResults_new } from 'sr_test_framework';
-import { git_free, git_resolveRootPath, git_status } from './index';
+import { git_free, git_resolveGitPath, git_status } from './index';
 import { object_properties } from 'sr_core_ts';
 
 // run main function that is declared as async. 
@@ -30,18 +30,18 @@ async function git_test()
   // git_status.
   {
     const method = 'git_status';
-    const expected = { isRepo:true, isBehind:false, isAhead:false, isModified:true };
+    const expected = { rootPath: process.cwd( ), isRepo:true, isBehind:false, isAhead:false, isModified:true };
     const actual = await git_status( undefined, activityLog_append ) ;
     const desc = 'get git status' ;
     testResults_append(results, { method, expected, actual, desc } );
   }
 
-  // git_resolveRootPath.
+  // git_resolveGitPath.
   {
-    const method = 'git_resolveRootPath';
+    const method = 'git_resolveGitPath';
     const dirPath = process.cwd( ) ;
     const expected = dirPath ;
-    const actual = await git_resolveRootPath( dirPath );
+    const actual = await git_resolveGitPath( dirPath );
     const desc = 'get git root path';
     testResults_append(results, { method, expected, actual, desc });
   }

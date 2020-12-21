@@ -4,6 +4,7 @@ import { dir_containsItem } from 'sr_core_ts';
 
 let git: SimpleGit | null = null ;
 let git_rootPath = '' ;
+let git_isRepo = false ;
 
 type AppendActivityLog = (text: string) => void ;
 
@@ -13,7 +14,6 @@ type AppendActivityLog = (text: string) => void ;
 async function git_ensure(rootPath: string | undefined, 
                     appendActivityLog : AppendActivityLog )
 {
-  let isRepo = false ;
   if ( !rootPath )
   {
     rootPath = process.cwd( ) ;
@@ -24,20 +24,22 @@ async function git_ensure(rootPath: string | undefined,
   {
     git = null;
     git_rootPath = '';
+    git_isRepo = false ;
   }
 
   if (!git)
   {
     try
     {
+      git_rootPath = rootPath ;
       git = simpleGit(rootPath);
       const sr = await git.status(['-uno']);      
-      isRepo = true ;
+      git_isRepo = true ;
     }
     catch(e)
     {
       git = null ;
-      isRepo = false ;
+      git_isRepo = false ;
       if (e.message.indexOf('fatal: not a git repository') == -1)
       {
         appendActivityLog(e.message) ;
@@ -46,12 +48,11 @@ async function git_ensure(rootPath: string | undefined,
     }
     if ( git )
     {
-      git_rootPath = rootPath;
       appendActivityLog(`git folder ${git_rootPath}`);
     }
   }
 
-  return {isRepo} ;
+  return { rootPath, isRepo:git_isRepo} ;
 }
 
 // ----------------------------------- git_free -----------------------------------
@@ -108,9 +109,9 @@ export async function git_pull(
   return errmsg ;
 }
 
-// ------------------------------ git_resolveRootPath ------------------------------
+// ------------------------------ git_resolveGitPath ------------------------------
 // look for .git folder in the hierarchy of the specified directory path.
-export async function git_resolveRootPath(dirPath: string): Promise<string>
+export async function git_resolveGitPath(dirPath: string): Promise<string>
 {
   // starting from dirPath, check for .git sub folder.
   while (true)
@@ -138,12 +139,10 @@ export async function git_status(
   let isBehind = false;
   let isAhead = false;
   let isModified = false;
-  let isRepo = false ;
 
   await git_ensure(rootPath, appendActivityLog);
   if (git)
   {
-    isRepo = true ;
     try
     {
       const rv = await git.remote(['update']);
@@ -162,5 +161,5 @@ export async function git_status(
     }
   }
 
-  return { isRepo, isBehind, isAhead, isModified };
+  return { rootPath:git_rootPath, isRepo:git_isRepo, isBehind, isAhead, isModified };
 }
