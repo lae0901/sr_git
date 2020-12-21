@@ -10,9 +10,10 @@ type AppendActivityLog = (text: string) => void ;
 // ---------------------------------- git_ensure ----------------------------------
 // make sure global SimpleGit object is instantiated. 
 // Connect to git repo found from root path of project opened in vscode.
-function git_ensure(rootPath: string | undefined, 
+async function git_ensure(rootPath: string | undefined, 
                     appendActivityLog : AppendActivityLog )
 {
+  let isRepo = false ;
   if ( !rootPath )
   {
     rootPath = process.cwd( ) ;
@@ -27,13 +28,37 @@ function git_ensure(rootPath: string | undefined,
 
   if (!git)
   {
-    git = simpleGit(rootPath);
+    try
+    {
+      git = simpleGit(rootPath);
+      const sr = await git.status(['-uno']);      
+      isRepo = true ;
+    }
+    catch(e)
+    {
+      git = null ;
+      isRepo = false ;
+      if (e.message.indexOf('fatal: not a git repository') == -1)
+      {
+        appendActivityLog(e.message) ;
+        appendActivityLog(`${rootPath} is not a git folder`);
+      }
+    }
     if ( git )
     {
       git_rootPath = rootPath;
       appendActivityLog(`git folder ${git_rootPath}`);
     }
   }
+
+  return {isRepo} ;
+}
+
+// ----------------------------------- git_free -----------------------------------
+export function git_free( )
+{
+  git_rootPath = '' ;
+  git = null ;
 }
 
 // -------------------------------- git_listRemote --------------------------------
@@ -41,7 +66,7 @@ export async function git_listRemote(
                         rootPath: string | undefined,
                         appendActivityLog: (text: string) => void)
 {
-  git_ensure(rootPath, appendActivityLog);
+  await git_ensure(rootPath, appendActivityLog);
   if (git)
   {
     try
@@ -66,7 +91,7 @@ export async function git_pull(
   appendActivityLog: (text: string) => void)
 {
   let errmsg = '' ;
-  git_ensure(rootPath, appendActivityLog );
+  await git_ensure(rootPath, appendActivityLog );
   if (git)
   {
     try
@@ -108,15 +133,14 @@ export async function git_resolveRootPath(dirPath: string): Promise<string>
 // -------------------------------- git_status --------------------------------
 export async function git_status(
         rootPath: string | undefined, 
-        appendActivityLog: (text: string) => void ):
-  Promise<{ isRepo:boolean, isBehind?: boolean, isAhead?: boolean, isModified?: boolean }>
+        appendActivityLog: (text: string) => void )
 {
   let isBehind = false;
   let isAhead = false;
   let isModified = false;
   let isRepo = false ;
 
-  git_ensure(rootPath, appendActivityLog);
+  await git_ensure(rootPath, appendActivityLog);
   if (git)
   {
     isRepo = true ;

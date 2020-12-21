@@ -2,7 +2,8 @@ import * as os from 'os';
 import * as fs from 'fs';
 import * as path from 'path';
 import {testResults_append, testResults_consoleLog, testResults_new } from 'sr_test_framework';
-import { git_resolveRootPath, git_status } from './index';
+import { git_free, git_resolveRootPath, git_status } from './index';
+import { object_properties } from 'sr_core_ts';
 
 // run main function that is declared as async. 
 async_main( ) ;
@@ -43,6 +44,19 @@ async function git_test()
     const actual = await git_resolveRootPath( dirPath );
     const desc = 'get git root path';
     testResults_append(results, { method, expected, actual, desc });
+  }
+
+  // git status when not a repo folder
+  {
+    git_free( ) ;  
+    const method = 'git_status' ;
+    const aspect = 'git status in folder not a repo' ;
+    const save_cwd = process.cwd( ) ;
+    process.chdir('c:\\Users\\srich');
+    const status = await git_status(undefined, activityLog_append) ;
+    const actual = object_properties(status, ['isRepo']);
+    testResults_append( results, { method, aspect, expected:{isRepo:false}, actual })
+    process.chdir(save_cwd) ;
   }
 
   return results;
