@@ -11,7 +11,7 @@ import { dir_mkdir, string_tail, string_contains } from 'sr_core_ts';
 * gitPath = await git_resolveGitPath( dirPath )
 * errmsg = await git_pull( rootPath, appendActivityLog )
 
-## publish instructions
+## publish this sr_git package
 * increment version number in package.json
 * make sure new functions are exported from index.ts
 * npm run build

@@ -2,3 +2,5 @@ tester/lib
 lib/
 dist/
 node_modules/
+.vscode/settings.json
+

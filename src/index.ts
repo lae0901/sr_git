@@ -36,7 +36,7 @@ async function git_ensure(rootPath: string | undefined,
       const sr = await git.status(['-uno']);      
       git_isRepo = true ;
     }
-    catch(e)
+    catch( e: any)
     {
       git = null ;
       git_isRepo = false ;
