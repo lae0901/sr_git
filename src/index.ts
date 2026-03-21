@@ -100,7 +100,7 @@ export async function git_pull(
       const rv = await git.pull('origin', 'master');
       appendActivityLog(`git pull changes:${rv.summary.changes} insertions:${rv.summary.insertions}`);
     }
-    catch (e)
+    catch (e:any)
     {
       errmsg = e.toString( ) ;
       appendActivityLog(`git pull error: ${e}`);

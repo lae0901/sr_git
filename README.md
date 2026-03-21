@@ -23,3 +23,9 @@ import { dir_mkdir, string_tail, string_contains } from 'sr_core_ts';
 ## testing 
 * npm run test
 * or press F5, run task "run tester"
+
+## snippets 
+
+Since this repo is public it is used as storage location of various snippets.json files.
+
+Look to SR-SNIPPET-PROMPT project for code which fetches snippet .json files from this SR-GIT repo. 

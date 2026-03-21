@@ -1,0 +1,82 @@
+{
+  "language": "html",
+  "branches": {
+    "root": {
+      "items": [
+        {
+          "type:": "snippet",
+          "name": "vue YN checkbox"
+        },
+        {
+          "type:": "branch",
+          "name": "bootstrap"
+        },
+        {
+          "type:": "snippet",
+          "name": "vue select"
+        }
+      ]
+    },
+    "vue": {
+      "items": [
+        {
+          "type:": "snippet",
+          "name": "vue YN checkbox"
+        },
+        {
+          "type:": "snippet",
+          "name": "vue select"
+        }
+      ]
+    },
+    "bootstrap": {
+      "abbrev": "boot",
+      "items": [
+        {
+          "type:": "snippet",
+          "name": "vert input text"
+        }
+      ]
+    }
+  },
+  "snippets": {
+    "vue YN checkbox":
+    {
+      "prefix": "vue YN checkbox",
+      "body": [
+        "<input type=\"checkbox\" v-model=\"$1\":checked = \"$1 == 'Y'\"",
+        "            :checked = \"$1 == 'Y'\"",
+        "   true-value=\"Y\" false-value=\"N\" @change=\"updateShow(item)\" >"
+      ],
+      "description": "vue YN checkbox"
+    },
+
+    "vert input text":
+    {
+      "prefix": "vert input text",
+      "body": [
+        "<div >",
+        "  <label for=\"$1\" class=\"form-label\">Email address</label>",
+        "  <input type=\"email\" class=\"form-control\" id=\"$1\" aria-describedby=\"emailHelp\">",
+        "  <div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>",
+        "</div>"
+      ],
+      "description": "vert input text"
+    },
+
+    "vue select":
+    {
+      "prefix": "vue select",
+      "body": [
+        "<div class=\"vert-input\">",
+        "<label for=\"carrier\">Carrier</label>",
+        "<select id=\"carrier\" class=\"form-select\" v-model=\"shipment.carrier\">",
+        "<option v-for=\"item in carrierArr\" :value=\"item\" ",
+        "     :selected=\"(shipment.carrier == item) ? true : false\">{{item}}</option>",
+        "  </select>",
+        "</div>"
+      ],
+      "description": "vue select"
+    }
+  }
+}
