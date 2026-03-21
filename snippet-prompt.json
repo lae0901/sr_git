@@ -5,15 +5,15 @@
       "branchName": "root",
       "items": [
         {
-          "type:": "snippet",
+          "type": "snippet",
           "name": "vue YN checkbox"
         },
         {
-          "type:": "branch",
+          "type": "branch",
           "name": "bootstrap"
         },
         {
-          "type:": "snippet",
+          "type": "snippet",
           "name": "vue select"
         }
       ]
@@ -22,11 +22,11 @@
       "branchName": "vue",
       "items": [
         {
-          "type:": "snippet",
+          "type": "snippet",
           "name": "vue YN checkbox"
         },
         {
-          "type:": "snippet",
+          "type": "snippet",
           "name": "vue select"
         }
       ]
@@ -36,7 +36,7 @@
       "abbrev": "boot",
       "items": [
         {
-          "type:": "snippet",
+          "type": "snippet",
           "name": "vert input text"
         }
       ]
