@@ -2,6 +2,7 @@
   "language": "html",
   "branches": {
     "root": {
+      "branchName": "root",
       "items": [
         {
           "type:": "snippet",
@@ -18,6 +19,7 @@
       ]
     },
     "vue": {
+      "branchName": "vue",
       "items": [
         {
           "type:": "snippet",
@@ -30,6 +32,7 @@
       ]
     },
     "bootstrap": {
+      "branchName": "bootstrap",
       "abbrev": "boot",
       "items": [
         {
@@ -44,8 +47,8 @@
     {
       "prefix": "vue YN checkbox",
       "body": [
-        "<input type=\"checkbox\" v-model=\"$1\":checked = \"$1 == 'Y'\"",
-        "            :checked = \"$1 == 'Y'\"",
+        "<input type=\"checkbox\" v-model=\"$1\" ",
+        "            :checked=\"$1 == 'Y'\"",
         "   true-value=\"Y\" false-value=\"N\" @change=\"updateShow(item)\" >"
       ],
       "description": "vue YN checkbox"
