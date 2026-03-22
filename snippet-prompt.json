@@ -1,5 +1,6 @@
 {
   "language": "html",
+  "root": "root",
   "branches": {
     "root": {
       "branchName": "root",
