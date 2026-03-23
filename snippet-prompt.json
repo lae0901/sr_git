@@ -7,6 +7,7 @@
      "owner and name of the github repo where the snippets, shells and prompt branches are stored."
     ]
   },
+  "root": "root",
   "branches": {
     "root": {
       "branchName": "root",
