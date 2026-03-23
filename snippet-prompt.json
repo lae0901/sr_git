@@ -1,5 +1,12 @@
 {
   "language": "html",
+  "repo": {
+    "owner": "lae0901",
+    "name": "sr_git",
+    "description": [
+     "owner and name of the github repo where the snippets, shells and prompt branches are stored."
+    ]
+  },
   "branches": {
     "root": {
       "branchName": "root",
@@ -11,6 +18,10 @@
         {
           "type": "branch",
           "name": "bootstrap"
+        },
+        {
+          "type": "branch",
+          "name": "shells"
         },
         {
           "type": "snippet",
@@ -40,6 +51,21 @@
           "name": "vert input text"
         }
       ]
+    },
+    "shells": {
+      "branchName": "shells",
+      "items": [
+        {
+          "type": "shell",
+          "name": "vue-boot-shell"
+        }
+      ]
+    }
+  },
+  "shells": {
+    "vue-boot-shell": {
+      "folder": "./shells/vue-boot-shell",
+      "description": "shell of web project which uses vue.js and bootstrap to render a basic web page."
     }
   },
   "snippets": {

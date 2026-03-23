@@ -1,0 +1,337 @@
+  @media print {
+    div.control-buttons { display:none;}
+    pricelist-navbar { display:none;}
+    button { display:none;}
+    th.option-column,td.option-column { display:none;}
+    th.select-column,td.select-column { display:none;}
+  }
+
+  @media (min-width: 1400px)
+  {
+      .container{
+          max-width: 1300px;
+      }
+  }    
+  @media (min-width: 1600px)
+  {
+      .container{
+          max-width: 1500px;
+      }
+  }    
+
+  @media (min-width: 1800px)
+  {
+      .container{
+          max-width: 1700px;
+      }
+  }    
+
+
+body {
+  margin: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Style for error message div */
+.error-message {
+  color: red;
+  background: #ffebee;
+  border: 1px solid #f44336;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Hide the error-message div completely when it's empty or contains only whitespace */
+.error-message:empty,
+.error-message:has(only-child:empty) {
+  display: none;
+}
+
+header {
+  background-color: #3F51B5;
+  color: #fff;
+  padding:7px;
+}
+
+section.content {
+  flex: 1;
+}
+
+footer {
+  background-color: #FFC107;
+  color: #333;
+  padding:7px;
+}
+
+span.bg-link-like {
+    color:black;
+}
+
+span:hover.bg-link-like {
+    cursor:pointer;
+    color:#0056b3;
+}
+
+span.input-readonly-like {
+    background-color: #e9ecef;
+    padding:6px 12px;
+    display:block;
+    border-radius:.25rem;
+    border:1px solid #ced4da;    
+    width:100%;
+    line-height: 1.5;
+}
+
+span:hover.span-link-like {
+    cursor:pointer;
+}
+
+.ac-background-white {
+  background-color:white;
+}
+
+.ac-border-thin {
+  border-color:grey;
+  border-width:1px;
+}
+
+.navbar-dark .steve-navbar-text
+{
+  color: rgba(255,255,255,.55);
+ }
+
+ .flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+ }
+
+ .flex-row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-start;
+   gap: 2em;
+   /* width: 90%; */
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ .flex-row-center
+ {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ .display-none {
+   display: none;
+ }
+
+ .vert-input>label {
+   margin-bottom: 0.5rem;
+   display: block;
+ }
+
+ .vert-input-center {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .vert-input input {
+   display: block;
+   background-color: #fff;
+   border-radius: 0.375em;
+   border: 1px solid #dee2e6;
+ }
+
+ .vert-input input:not([type="checkbox"]) {
+   width: 100%;
+   padding: 6px 12px;
+   line-height: 1.5;
+ }
+
+ .vert-input input:focus {
+   border-color: #86b7fe;
+   outline: 0;
+   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+ }
+ 
+ .vert-input-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+
+.inline-input {
+  margin-bottom: 0.5rem;
+}
+
+ .inline-input label {
+  display: inline-block;
+   margin-right: 0.5rem;
+ }
+
+.inline-input input {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 0.375em;
+  border: 1px solid #dee2e6;
+}
+
+ .flex-100 {
+   display: flex;
+  margin-left: auto;
+    margin-right: auto;
+   width: 100%;
+ }
+
+ .width-50 {
+   width: 50%;
+ }
+
+ .main-container {
+   display: flex;
+   width: 100%;
+   gap: 25px;
+   box-sizing: border-box;
+ }
+
+ .side-by-side-panel {
+   flex: 1;
+ }
+
+ .srcmbr-textarea {
+    width: 100%;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0.375em;
+    border: 1px solid #dee2e6;
+    white-space: nowrap;
+    overflow-x: auto;
+ }
+
+.monospace-textarea {
+  width: 100%;
+    line-height: 1.5;
+    font-size: 14px;
+    height: 600px;
+  resize: vertical;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap;
+      overflow-x: auto;
+    }
+
+.xsrcmbr-text-editor {
+  width: 100%;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  border-radius: 0.375em;
+  border: 1px solid #dee2e6;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+ .dspf-render-div {
+  position: relative;
+   width: 100%;
+   height:30em;
+   overflow: auto;
+   background-color: #56e49d;
+   border: 1px solid #4ed75e;
+   padding: 10px;
+   box-sizing: border-box;
+ }
+
+ .dspf-render-div:focus {
+  border: 2px solid blue;
+  outline: none;
+ }
+
+ .dspf-literal {
+   font-family: monospace;
+   position: absolute;
+   font-size: 12px;
+   line-height: 1.2;
+   white-space: pre-wrap;
+   word-break: normal;
+   color: #333;
+ }
+
+ .dspf-input {
+   font-family: monospace;
+   position: absolute;
+   font-size: 12px;
+   line-height: 1.2;
+   white-space: pre-wrap;
+   word-break: normal;
+   color: #333;
+ }
+
+.underline-input {
+  border: none;
+  /* Remove default borders */
+  border-bottom: 2px solid black;
+  /* Add a bottom border to mimic an underscore */
+  outline: none;
+  /* Remove default focus outline */
+  background: transparent;
+  /* Optional: make background transparent */
+  padding: 1px 0;
+  /* Optional: adjust padding */
+  background-color: #56e49d;
+}
+
+.underline-input:focus {
+  border-bottom-color: blue;
+  /* Optional: change color on focus */
+}
+
+.dspf-input-textbox {
+  border: 1px solid #ced4da;
+  border-radius: 0.375em;
+  padding: 1px;
+}
+
+/* Hide everything except the print content during printing */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #printContent,
+  #printContent * {
+    visibility: visible;
+  }
+
+  #printContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* monospace font for print */
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 1.1;
+    white-space: pre-wrap;
+  }
+}
