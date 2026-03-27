@@ -64,9 +64,17 @@
     }
   },
   "shells": {
-    "vue-boot-shell": {
+    "vue-boot-shell": 
+    {
+      "shellName": "vue-boot-shell",
       "folder": "./shells/vue-boot-shell",
       "description": "shell of web project which uses vue.js and bootstrap to render a basic web page."
+    },
+    "view-text-in-browser":
+    {
+      "shellName": "view-text-in-browser",
+      "file": "./shells/vscode/view-text-in-browser.ts",
+      "description": "vscode shell to view a text streatm in the default browser."
     }
   },
   "snippets": {
