@@ -1,0 +1,20 @@
+{
+  "vitest shell": {
+    "scope": "typescript",
+    "prefix": "vitestshell",
+    "body": [
+      "import { test, expect, describe} from 'vitest';",
+      "",
+      "describe('fetch snippet file from github repo', () =>",
+      "{",
+      "test('fetch from main/sr_git', async () =>",
+      "{",
+      "const filePath = 'snippets.json';",
+      "expect(errmsg).toBe('');",
+      "expect(text).not.toBe('');",
+      "});",
+      "});",
+    ],
+    "description": "shell of vitest test suite typescript"
+  }
+}

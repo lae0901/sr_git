@@ -14,23 +14,25 @@
     "description": "shell of function which registers a vscode command"
   },
 
-  "vitest shell": {
+  "vscode output channel setup": {
     "scope": "typescript",
-    "prefix": "vitestshell",
+    "prefix": "outputChannelSetup",
     "body": [
-
-"import { test, expect, describe} from 'vitest';",
+"let global_outputChannel: vscode.OutputChannel | undefined;",
 "",
-"describe('fetch snippet file from github repo', () =>",
+"export function getOutputChannel(): vscode.OutputChannel",
 "{",
-  "test('fetch from main/sr_git', async () =>",
-  "{",
-    "const filePath = 'snippets.json';",
-    "expect(errmsg).toBe('');",
-    "expect(text).not.toBe('');",
-  "});",
-"});",
+	"if (!global_outputChannel)",
+	"{",
+		"global_outputChannel = vscode.window.createOutputChannel('${1:extension-name}');",
+		"global_outputChannel.show(true);",
+  "}",
+	"return global_outputChannel;",
+"}",
+"",
+	"const output = getOutputChannel( );",
+	"output.appendLine('extension output channel message');",
     ],
-    "description": "shell of vitest test suite"
+    "description": "setup output channel of extension "
   }
 }
