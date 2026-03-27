@@ -1,0 +1,16 @@
+{
+  "function registers vscode command":
+  {
+    "scope": "typescript",
+    "prefix": "vsregcmdfunc",
+    "body": [
+"export function registerCommand_${1:commandName}()",
+"{",
+  "const command = vscode.commands.registerCommand('${2:extension-name}.${1:commandName}', async (branchName?: string) =>",
+  "{",
+  "});",
+"}"
+    ],
+    "description": "shell of function which registers a vscode command"
+  }
+}
