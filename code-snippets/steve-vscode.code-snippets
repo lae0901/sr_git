@@ -31,7 +31,7 @@
 "}",
 "",
 	"const output = getOutputChannel( );",
-	"output.appendLine('extension output channel message');",
+	"output.appendLine('extension output channel message');"
     ],
     "description": "setup output channel of extension "
   },
@@ -75,7 +75,7 @@
       "return [compItem];",
     "}",
   "}",
-"}",
+"}"
     ],
     "description": "shell of a vscode completion item provider" 
   }

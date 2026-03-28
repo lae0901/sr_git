@@ -13,7 +13,7 @@
       "expect(errmsg).toBe('');",
       "expect(text).not.toBe('');",
       "});",
-      "});",
+      "});"
     ],
     "description": "shell of vitest test suite typescript"
   }
