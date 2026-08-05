@@ -1,6 +1,7 @@
 {
   "function registers vscode command":
   {
+    "name": "function registers vscode command",
     "scope": "typescript",
     "prefix": "vsregcmdfunc",
     "body": [
@@ -15,6 +16,7 @@
   },
 
   "vscode output channel setup": {
+    "name": "vscode output channel setup",
     "scope": "typescript",
     "prefix": "outputChannelSetup",
     "body": [
@@ -37,6 +39,7 @@
   },
 
   "completion item provider": {
+    "name": "completion item provider",
     "scope": "typescript",
     "prefix": "compitemprov",
     "body": [
