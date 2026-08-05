@@ -1,43 +1,34 @@
 {
-  "function registers vscode command":
-  {
-    "name": "function registers vscode command",
-    "scope": "typescript",
-    "prefix": "vsregcmdfunc",
+  "function registers vscode command": {
     "body": [
-"export function registerCommand_${1:commandName}()",
-"{",
-  "const command = vscode.commands.registerCommand('${2:extension-name}.${1:commandName}', async (branchName?: string) =>",
-  "{",
-  "});",
-"}"
+      "export function registerCommand_${1:commandName}()",
+      "{",
+      "  const command = vscode.commands.registerCommand('${2:extension-name}.${1:commandName}', async (branchName?: string) =>",
+      "  {",
+      "  });",
+      "}"
     ],
-    "description": "shell of function which registers a vscode command"
+    "name": "function registers vscode command"
   },
-
   "vscode output channel setup": {
-    "name": "vscode output channel setup",
-    "scope": "typescript",
-    "prefix": "outputChannelSetup",
     "body": [
-"let global_outputChannel: vscode.OutputChannel | undefined;",
-"",
-"export function getOutputChannel(): vscode.OutputChannel",
-"{",
-	"if (!global_outputChannel)",
-	"{",
-		"global_outputChannel = vscode.window.createOutputChannel('${1:extension-name}');",
-		"global_outputChannel.show(true);",
-  "}",
-	"return global_outputChannel;",
-"}",
-"",
-	"const output = getOutputChannel( );",
-	"output.appendLine('extension output channel message');"
+      "let global_outputChannel: vscode.OutputChannel | undefined;",
+      "",
+      "export function getOutputChannel(): vscode.OutputChannel",
+      "{",
+      "  if (!global_outputChannel)",
+      "  {",
+      "    global_outputChannel = vscode.window.createOutputChannel('${1:extension-name}');",
+      "    global_outputChannel.show(true);",
+      "  }",
+      "  return global_outputChannel;",
+      "}",
+      "",
+      "const output = getOutputChannel( );",
+      "output.appendLine('extension output channel message');"
     ],
-    "description": "setup output channel of extension "
+    "name": "vscode output channel setup"
   },
-
   "completion item provider": {
     "name": "completion item provider",
     "scope": "typescript",
@@ -45,41 +36,40 @@
     "body": [
       "// register ${1:language} Completion Provider",
       "{",
-		"const provider = vscode.languages.registerCompletionItemProvider(",
-			"{ scheme: 'file', language: '${1:language}'",
-        "},",
-				"new ${1:language}_CompletionItemProvider(),",
-		");",
-		"context.subscriptions.push(provider);",
+      "const provider = vscode.languages.registerCompletionItemProvider(",
+      "{ scheme: 'file', language: '${1:language}'",
+      "},",
+      "new ${1:language}_CompletionItemProvider(),",
+      ");",
+      "context.subscriptions.push(provider);",
       "}",
       "",
-
-"export class ${1:Html}_CompletionItemProvider implements vscode.CompletionItemProvider",
-"{",
-  "provideCompletionItems(",
-    "document: vscode.TextDocument,",
-    "position: vscode.Position,",
-    "token: vscode.CancellationToken,",
-    "context: vscode.CompletionContext",
-  "): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList>",
-  "{",
-    "// Your custom logic: e.g., extract code around cursor",
-    "const editorText = document.getText();",
-    "const lineText = document.lineAt(position.line).text.trim();",
-    "const linePrefix = document.lineAt(position).text.substring(0, position.character);",
-    "let compItem: vscode.CompletionItem;",
-"",
-    "if (lineText == 'detection')",
-    "{",
+      "export class ${1:Html}_CompletionItemProvider implements vscode.CompletionItemProvider",
+      "{",
+      "provideCompletionItems(",
+      "document: vscode.TextDocument,",
+      "position: vscode.Position,",
+      "token: vscode.CancellationToken,",
+      "context: vscode.CompletionContext",
+      "): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList>",
+      "{",
+      "// Your custom logic: e.g., extract code around cursor",
+      "const editorText = document.getText();",
+      "const lineText = document.lineAt(position.line).text.trim();",
+      "const linePrefix = document.lineAt(position).text.substring(0, position.character);",
+      "let compItem: vscode.CompletionItem;",
+      "",
+      "if (lineText == 'detection')",
+      "{",
       "compItem = new vscode.CompletionItem('detection Hello World', vscode.CompletionItemKind.Text);",
       "compItem.detail = 'detection Hello World';",
       "compItem.documentation = new vscode.MarkdownString('Inserts **Hello World!**');",
       "",
       "return [compItem];",
-    "}",
-  "}",
-"}"
+      "}",
+      "}",
+      "}"
     ],
-    "description": "shell of a vscode completion item provider" 
+    "description": "shell of a vscode completion item provider"
   }
 }
