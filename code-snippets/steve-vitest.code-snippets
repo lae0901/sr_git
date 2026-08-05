@@ -1,6 +1,6 @@
 {
   "vitest shell": {
-    "name:": "vitest shell",
+    "name": "vitest shell",
     "scope": "typescript",
     "prefix": "vitestshell",
     "body": [
