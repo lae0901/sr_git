@@ -1,0 +1,18 @@
+{
+  "judi-custom-element-parts": {
+    "name": "judi-custom-element-parts",
+    "body": [
+      "  import { initial_bindingInstructions_applyDataToDOM, extractBindingInstructions,",
+      "          pageData_applyToDOM } from '../../../../frameworks/judi/dist/judi.js';",
+      "",
+      "  bindingComplex: any = null;",
+      "",
+      "// at the end of connected_render( ) function",
+      "    this.bindingComplex = extractBindingInstructions('', this.elem_dialog);",
+      "",
+      "// showDialog function, before showModal( )",
+      "    initial_bindingInstructions_applyDataToDOM(this.bindingComplex, this);"
+    ],
+    "scope": "typescript,javascript"
+  }
+}
